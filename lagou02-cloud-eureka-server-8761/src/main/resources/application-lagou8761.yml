@@ -1,0 +1,37 @@
+
+#  单节点
+#server:
+#  port: 8761
+#spring:
+#  application:
+#    # 应⽤名称，会在Eureka中作为服务的id标识（serviceId）
+#    name: lagou-cloud-eureka-server
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    #⾃⼰就是服务不需要从Eureka Server获取服务信息,默认为true，置为false
+#    fetch-registry: false
+#    # ⾃⼰就是服务不需要注册⾃⼰
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+
+#===========================================================================
+#集群
+server:
+  port: 8761
+spring:
+  application:
+    # 应⽤名称，会在Eureka中作为服务的id标识（serviceId）
+    name: lagou-cloud-eureka-server
+eureka:
+  instance:
+    hostname: LagouCloudEurekaServerA
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://LagouCloudEurekaServerB:8762/eureka/
