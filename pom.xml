@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>lagou01-service-common</module>
+    <module>lagou02-cloud-eureka-server-8761</module>
   </modules>
 
   <name>lagou-parent</name>
