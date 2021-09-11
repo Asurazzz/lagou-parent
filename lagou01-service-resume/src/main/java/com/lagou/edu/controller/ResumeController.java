@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * @author yemingjie
  * @Classname ResumeController
  * @Description TODO
  * @Date 2021/7/2 11:33
