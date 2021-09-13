@@ -2,6 +2,7 @@ package com.lagou.edu.controller;
 
 import com.lagou.edu.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,23 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
-    //"/resume/openstate/1545132"
+//    //"/resume/openstate/1545132"
+//    @GetMapping("/openstate/{userId}")
+//    public Integer findDefaultResumeState(@PathVariable Long userId) {
+//        return resumeService.findDefaultResumeByUserId(userId).getIsOpenResume();
+//        //return port;
+//    }
+
+    @Value("${server.port}")
+    private Integer port;
+
+    /**
+     * 使用ribbon的时候返回port区分实例
+     * @param userId
+     * @return
+     */
     @GetMapping("/openstate/{userId}")
     public Integer findDefaultResumeState(@PathVariable Long userId) {
-        return resumeService.findDefaultResumeByUserId(userId).getIsOpenResume();
-        //return port;
+        return port;
     }
 }

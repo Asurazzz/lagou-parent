@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,21 +40,37 @@ public class AutodeliverController {
     private DiscoveryClient discoveryClient;
 
     /**
-     * 改造
+     * 服务注册到Eureka之后的改造
+     * @param userId
+     * @return
+     */
+//    @GetMapping("/checkState/{userId}")
+//    public Integer findResumeOpenState(@PathVariable Long userId) {
+//        // 从Eureka Server获取我们关注的那个服务实例信息以及接口信息
+//        // 1.从Eureka Server获取lagou-service-resume服务的实例信息（使用客户端对象）
+//        List<ServiceInstance> instances = discoveryClient.getInstances("lagou-service-resume");
+//        // 2.如果有多个实例，就选择一个使用
+//        ServiceInstance serviceInstance = instances.get(0);
+//        // 3.从元数据信息获取host port
+//        String host = serviceInstance.getHost();
+//        int port = serviceInstance.getPort();
+//        String url = "http://" + host + ":" + port + "/resume/openstate/" + userId;
+//        System.out.println("=====================" + url + "======================");
+//        Integer forObject = restTemplate.getForObject(url, Integer.class);
+//        return forObject;
+//    }
+
+
+    /**
+     * 使用Ribbon负载均衡
      * @param userId
      * @return
      */
     @GetMapping("/checkState/{userId}")
     public Integer findResumeOpenState(@PathVariable Long userId) {
-        // 从Eureka Server获取我们关注的那个服务实例信息以及接口信息
-        // 1.从Eureka Server获取lagou-service-resume服务的实例信息（使用客户端对象）
-        List<ServiceInstance> instances = discoveryClient.getInstances("lagou-service-resume");
-        // 2.如果有多个实例，就选择一个使用
-        ServiceInstance serviceInstance = instances.get(0);
-        // 3.从元数据信息获取host port
-        String host = serviceInstance.getHost();
-        int port = serviceInstance.getPort();
-        String url = "http://" + host + ":" + port + "/resume/openstate/" + userId;
+        // 使用ribbon不需要我们获取服务实例然后选择一个去访问了
+        // 指定服务名
+        String url = "http://lagou-service-resume/resume/openstate/" + userId;
         System.out.println("=====================" + url + "======================");
         Integer forObject = restTemplate.getForObject(url, Integer.class);
         return forObject;
