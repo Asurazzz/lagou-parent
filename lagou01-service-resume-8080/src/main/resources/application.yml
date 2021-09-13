@@ -13,5 +13,23 @@ spring:
     show-sql: true
     hibernate:
       naming:
+        #避免将驼峰命名转换为下划线命名
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#避免将驼峰命名转换为下划线命名
+eureka:
+  client:
+    # 注册到集群，就把多个Eurekaserver地址使用逗号连接起来即可；注册到单实例（非集群模式），那就写一个就ok
+    service-url: http://LagouCloudEurekaServerA:8761/eureka,http://LagouCloudEurekaServerB:8762/eureka
+  instance:
+    #服务实例中显示ip，而不是显示主机名（兼容老的eureka版本）
+    prefer-ip-address: true
+    # 实例名称： 192.168.1.103:lagou-service-resume:8080，我们可以自定义它
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    # 自定义Eureka元数据
+    metadata-map:
+      cluster: cl1
+      region: rn1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
