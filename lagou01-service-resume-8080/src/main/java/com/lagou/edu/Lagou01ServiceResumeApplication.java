@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
+/**
+ * service-resume-8080
+ */
 @SpringBootApplication
 @EntityScan("com.lagou.edu.pojo")
 //@EnableEurekaClient  // 开启Eureka Client（Eureka独有）
