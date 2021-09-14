@@ -102,5 +102,38 @@ public class AutodeliverController {
     }
 
 
+    /**
+     * 1) 服务提供者处理超时，熔断，返回错误信息
+     * 2) 有可能服务提供者出现异常直接抛出异常信息
+     *
+     * 以上信息，都会返回到消费者这里，很多时候消费者服务不希望把收到异常/错误信息再抛到它上游去
+     * 用户微服务 ---  注册微服务 --- 优惠券微服务
+     *               1.登记注册
+     *               2.分发优惠券（非核心）如果调用优惠券微服务返回异常信息或者熔断的错误信息，这些信息不应该抛给用户，不能丢失用户
+     *                  此时，返回预设的默认值
+     */
+    @GetMapping("checkStateTimeOutFallBack/{userId}")
+    @HystrixCommand(
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
+            }, fallbackMethod = "myFallBack" // 回退方法
+    )
+    public Integer findResumeOpenStateTimeOutFallBack(@PathVariable Long userId) {
+        String url = "http://lagou-service-resume/resume/openstate/" + userId;
+        System.out.println("=====================" + url + "======================");
+        Integer forObject = restTemplate.getForObject(url, Integer.class);
+        return forObject;
+    }
 
+
+    /**
+     * 定义回退方法，返回预设默认值
+     * 注意：该方法形参和返回值与原始方法保持一致
+     * @param userId
+     * @return
+     */
+    public Integer myFallBack(Long userId) {
+        // 兜底数据
+        return -1;
+    }
 }
