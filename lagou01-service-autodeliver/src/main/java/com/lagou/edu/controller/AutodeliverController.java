@@ -136,4 +136,40 @@ public class AutodeliverController {
         // 兜底数据
         return -1;
     }
+
+
+
+    @GetMapping("checkStateTimeOutFallBack2/{userId}")
+    @HystrixCommand(
+            // 线程池标识，保持唯一，不唯一就共用了
+            threadPoolKey = "findResumeOpenStateTimeoutFallback",
+            // 线程池细节属性配置
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "2"),// 线程数
+                    @HystrixProperty(name = "maxQueueSize", value = "20") // 等待队列长度
+            },
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
+
+                    /**
+                     * Hystrix高级配置，定制工作过程细节:
+                     * 8秒钟内，请求次数达到2个，并且失败率在50%以上，就跳闸, 跳闸后活动窗⼝设置为3s
+                     */
+                    // 时间窗口定义
+                    @HystrixProperty(name = "metrics.rollingStats.timeoutInMilliseconds", value = "8000"),
+                    // 统计时间窗口内的最小请求数
+                    @HystrixProperty(name = "circuitBreak.requestVolumeThreshold", value = "2"),
+                    // 统计时间窗口内的错误数量百分比阈值
+                    @HystrixProperty(name = "circuitBreak.errorThresholdPercentage", value = "50"),
+                    // 自我修复时的活动窗口长度
+                    @HystrixProperty(name = "circuitBreak.sleepWindowInMilliseconds", value = "3000")
+
+            }, fallbackMethod = "myFallBack" // 回退方法
+    )
+    public Integer findResumeOpenStateTimeOutFallBack2(@PathVariable Long userId) {
+        String url = "http://lagou-service-resume/resume/openstate/" + userId;
+        System.out.println("=====================" + url + "======================");
+        Integer forObject = restTemplate.getForObject(url, Integer.class);
+        return forObject;
+    }
 }
