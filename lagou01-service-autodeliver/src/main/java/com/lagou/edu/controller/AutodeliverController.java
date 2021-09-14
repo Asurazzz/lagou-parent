@@ -1,5 +1,7 @@
 package com.lagou.edu.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.ServiceInstance;
@@ -75,4 +77,30 @@ public class AutodeliverController {
         Integer forObject = restTemplate.getForObject(url, Integer.class);
         return forObject;
     }
+
+
+    /**
+     * 使用histrix模拟超时
+     * @param userId
+     * @return
+     */
+    @HystrixCommand(
+            // 熔断的一些细节属性配置
+            commandProperties = {
+                    // 每一个属性都是HystrixProperty
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
+            }
+    )
+    @GetMapping("/checkStateTimeOut/{userId}")
+    public Integer findResumeOpenStateTimeOut(@PathVariable Long userId) {
+        // 使用ribbon不需要我们获取服务实例然后选择一个去访问了
+        // 指定服务名
+        String url = "http://lagou-service-resume/resume/openstate/" + userId;
+        System.out.println("=====================" + url + "======================");
+        Integer forObject = restTemplate.getForObject(url, Integer.class);
+        return forObject;
+    }
+
+
+
 }

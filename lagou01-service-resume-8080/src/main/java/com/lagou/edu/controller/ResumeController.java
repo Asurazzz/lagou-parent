@@ -38,6 +38,12 @@ public class ResumeController {
      */
     @GetMapping("/openstate/{userId}")
     public Integer findDefaultResumeState(@PathVariable Long userId) {
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return port;
     }
 }
