@@ -46,7 +46,7 @@ lagou-service-resume:
 logging:
   level:
     # Feign日志只会对日志级别为debug的做出响应
-    com.lagou.edu.controller.service.ResumeServiceFeignClient: debug
+    com.ymj.edu.service.ResumeServiceFeignClient: debug
 # 开启Feign的熔断功能
 feign:
   hystrix:
