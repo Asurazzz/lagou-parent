@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date 2021/9/15 16:17
  * @Created by yemingjie
  */
-@FeignClient(value = "lagou-service-resume")
-@RequestMapping("/resume")
+@FeignClient(value = "lagou-service-resume", fallback = ResumeFallback.class, path = "/resume")
+//@RequestMapping("/resume")
 public interface ResumeServiceFeignClient {
 
     // Feign要做的事就是拼装url发起请求

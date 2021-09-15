@@ -50,12 +50,12 @@ logging:
 # 开启Feign的熔断功能
 feign:
   hystrix:
-    enabled: false
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            ##########################################Hystrix的超时时长设置
-            timeoutInMilliseconds: 15000
+    enabled: true
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            ##########################################Hystrix的超时时长设置
+#            timeoutInMilliseconds: 15000
