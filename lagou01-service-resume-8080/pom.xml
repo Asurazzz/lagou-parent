@@ -26,7 +26,7 @@
         </dependency>
 
 
-        <!--Config 客户端依赖-->
+        <!-- Config 客户端依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-client</artifactId>
