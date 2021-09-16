@@ -22,6 +22,11 @@ spring:
       profile: dev # 后缀名称
       label: master # 分支名称
       uri: http://localhost:9006 # ConfigServer配置中心地址
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     # 注册到集群，就把多个Eurekaserver地址使用逗号连接起来即可；注册到单实例（非集群模式），那就写一个就ok

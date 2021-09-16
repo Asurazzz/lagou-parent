@@ -27,6 +27,11 @@ spring:
 
       # 读取分⽀
       label: master
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   #针对的被调⽤⽅微服务名称,不加就是全局⽣效
   #lagou-service-resume:
   # ribbon:

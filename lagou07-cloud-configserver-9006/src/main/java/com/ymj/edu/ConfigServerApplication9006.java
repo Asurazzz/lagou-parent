@@ -7,7 +7,8 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
  * @Classname ConfigServerApplication9006
- * @Description TODO
+ * @Description 增加消息总线之后： http://localhost:9006/actuator/bus-refresh可以让多个实例自动刷新
+ * 在发起刷新请求的时候http://localhost:9006/actuator/bus-refresh/lagou-service-resume:8081定向刷新
  * @Date 2021/9/16 14:50
  * @Created by yemingjie
  */

@@ -15,6 +15,19 @@ spring:
       naming:
         #避免将驼峰命名转换为下划线命名
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  # config客户端配置
+  cloud:
+    config:
+      name: ymj-service-resume #配置文件名称
+      profile: dev # 后缀名称
+      label: master # 分支名称
+      uri: http://localhost:9006 # ConfigServer配置中心地址
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     # 注册到集群，就把多个Eurekaserver地址使用逗号连接起来即可；注册到单实例（非集群模式），那就写一个就ok
