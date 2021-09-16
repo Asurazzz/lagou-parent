@@ -17,6 +17,7 @@
         <module>lagou03-cloud-eureka-server-8762</module>
         <module>lagou04-cloud-hystrix-dashboard-9000</module>
         <module>lagou05-service-autodeliver-8096</module>
+        <module>lagou07-cloud-configserver-9006</module>
     </modules>
 
     <name>lagou-parent</name>
