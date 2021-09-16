@@ -18,12 +18,14 @@ spring:
       server:
         git:
           uri: https://github.com/Asurazzz/lagou-parent.git
+          skip-ssl-validation: true
           #配置git服务地址
           username: Asurazzz #配置git⽤户名
-          password: yingdian12341 #配置git密码
+          password: ymjqq1042965192@ #配置git密码
           search-paths:
             - lagou-parent
-    # 读取分⽀
+
+      # 读取分⽀
       label: master
   #针对的被调⽤⽅微服务名称,不加就是全局⽣效
   #lagou-service-resume:
