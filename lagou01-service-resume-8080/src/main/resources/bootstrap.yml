@@ -36,6 +36,13 @@ eureka:
     metadata-map:
       cluster: cl1
       region: rn1
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh
+
+  #也可以暴露所有的端⼝
 management:
   endpoints:
     web:
