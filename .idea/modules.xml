@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lagou-parent.iml" filepath="$PROJECT_DIR$/lagou-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou01-service-autodeliver/lagou01-service-autodeliver.iml" filepath="$PROJECT_DIR$/lagou01-service-autodeliver/lagou01-service-autodeliver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou01-service-common/lagou01-service-common.iml" filepath="$PROJECT_DIR$/lagou01-service-common/lagou01-service-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou01-service-resume-8080/lagou01-service-resume-8080.iml" filepath="$PROJECT_DIR$/lagou01-service-resume-8080/lagou01-service-resume-8080.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou01-service-resume-8081/lagou01-service-resume-8081.iml" filepath="$PROJECT_DIR$/lagou01-service-resume-8081/lagou01-service-resume-8081.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou02-cloud-eureka-server-8761/lagou02-cloud-eureka-server-8761.iml" filepath="$PROJECT_DIR$/lagou02-cloud-eureka-server-8761/lagou02-cloud-eureka-server-8761.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou03-cloud-eureka-server-8761/lagou03-cloud-eureka-server-8761.iml" filepath="$PROJECT_DIR$/lagou03-cloud-eureka-server-8761/lagou03-cloud-eureka-server-8761.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou03-cloud-eureka-server-8762/lagou03-cloud-eureka-server-8762.iml" filepath="$PROJECT_DIR$/lagou03-cloud-eureka-server-8762/lagou03-cloud-eureka-server-8762.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou04-cloud-hystrix-dashboard-9000/lagou04-cloud-hystrix-dashboard-9000.iml" filepath="$PROJECT_DIR$/lagou04-cloud-hystrix-dashboard-9000/lagou04-cloud-hystrix-dashboard-9000.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou05-service-autodeliver-8096/lagou05-service-autodeliver-8096.iml" filepath="$PROJECT_DIR$/lagou05-service-autodeliver-8096/lagou05-service-autodeliver-8096.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou06-cloud-gateway-9002/lagou06-cloud-gateway-9002.iml" filepath="$PROJECT_DIR$/lagou06-cloud-gateway-9002/lagou06-cloud-gateway-9002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou07-cloud-configserver-9006/lagou07-cloud-configserver-9006.iml" filepath="$PROJECT_DIR$/lagou07-cloud-configserver-9006/lagou07-cloud-configserver-9006.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou08-cloud-stream-consumer-9091/lagou08-cloud-stream-consumer-9091.iml" filepath="$PROJECT_DIR$/lagou08-cloud-stream-consumer-9091/lagou08-cloud-stream-consumer-9091.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lagou08-cloud-stream-producer-9090/lagou08-cloud-stream-producer-9090.iml" filepath="$PROJECT_DIR$/lagou08-cloud-stream-producer-9090/lagou08-cloud-stream-producer-9090.iml" />
+    </modules>
+  </component>
+</project>
