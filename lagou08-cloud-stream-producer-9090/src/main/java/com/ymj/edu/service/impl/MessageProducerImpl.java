@@ -12,7 +12,9 @@ import org.springframework.messaging.support.MessageBuilder;
 @EnableBinding(Source.class)
 public class MessageProducerImpl implements IMessageProducer {
 
-    // 将MessageChannel的封装对象source注入到这里使用
+    /**
+     * 将MessageChannel的封装对象source注入到这里使用
+     */
     @Autowired
     private Source source;
 
