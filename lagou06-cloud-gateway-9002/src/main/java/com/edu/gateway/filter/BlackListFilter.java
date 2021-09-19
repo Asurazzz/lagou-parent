@@ -46,7 +46,7 @@ public class BlackListFilter implements GlobalFilter, Ordered {
 
         // 从request对象中获取客户端ip
         String clientIp = request.getRemoteAddress().getHostString();
-        if (blackList.contains(clientIp)) {
+        if (!blackList.contains(clientIp)) {
             // 拒绝访问，返回
             // 状态码
             response.setStatusCode(HttpStatus.UNAUTHORIZED);

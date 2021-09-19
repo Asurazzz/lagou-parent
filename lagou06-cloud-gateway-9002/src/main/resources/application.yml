@@ -37,3 +37,10 @@ spring:
           # 默认过滤几段地址
 #          filters:
 #            - StripPrefix=1
+
+
+#分布式链路追踪
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug

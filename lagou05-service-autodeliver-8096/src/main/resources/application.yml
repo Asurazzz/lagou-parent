@@ -43,10 +43,7 @@ lagou-service-resume:
     MaxAutoRetries: 0 #对当前选中实例重试次数，不包括第一次调用
     MaxAutoRetriesNextServer: 0 #切换实例的重试次数
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #负载策略调整
-logging:
-  level:
-    # Feign日志只会对日志级别为debug的做出响应
-    com.ymj.edu.service.ResumeServiceFeignClient: debug
+
 # 开启Feign的熔断功能
 feign:
   hystrix:
@@ -59,3 +56,10 @@ feign:
 #          thread:
 #            ##########################################Hystrix的超时时长设置
 #            timeoutInMilliseconds: 15000
+# 分布式链路追踪
+logging:
+  level:
+    # Feign日志只会对日志级别为debug的做出响应
+    #com.ymj.edu.service.ResumeServiceFeignClient: debug
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
