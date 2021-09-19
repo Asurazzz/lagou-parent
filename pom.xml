@@ -19,6 +19,7 @@
         <module>lagou05-service-autodeliver-8096</module>
         <module>lagou07-cloud-configserver-9006</module>
         <module>lagou08-cloud-stream-consumer-9091</module>
+        <module>lagou09-cloud-zipkin-server-9411</module>
     </modules>
 
     <name>lagou-parent</name>
