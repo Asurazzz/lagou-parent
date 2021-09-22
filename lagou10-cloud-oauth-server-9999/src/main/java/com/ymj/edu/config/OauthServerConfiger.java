@@ -1,7 +1,9 @@
-package com.ymj.edu;
+package com.ymj.edu.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -19,6 +21,9 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
 
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     /**
      * 认证服务器最终是以api接⼝的⽅式对外提供服务（校验合法性并⽣成令牌、校验令牌等）
@@ -79,7 +84,7 @@ public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
                 // token服务的⼀个描述，可以认为是token⽣成细节的描述，⽐如有效时间多少等
                 .tokenServices(authorizationServerTokenServices())
                 // 指定认证管理器，随后注⼊⼀个到当前类使⽤即可
-                .authenticationManager(null)
+                .authenticationManager(authenticationManager)
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
     }
 
