@@ -1,5 +1,6 @@
 package com.ymj.edu.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,18 @@ import java.util.ArrayList;
  */
 @Configuration
 public class SecurityConfiger extends WebSecurityConfigurerAdapter {
+
+    /**
+     * 密码编码对象（密码不进⾏加密处理）
+     * @return
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     /**
      *  注册⼀个认证管理器对象到容器
      * @return
@@ -40,15 +53,8 @@ public class SecurityConfiger extends WebSecurityConfigurerAdapter {
         // 实例化⼀个⽤户对象(相当于数据表中的⼀条⽤户记录)
         UserDetails user = new User("admin","123456",new ArrayList<>());
         auth.inMemoryAuthentication()
-                .withUser(user).passwordEncoder(passwordEncoder());
+                .withUser(user).passwordEncoder(passwordEncoder);
     }
 
-    /**
-     * 密码编码对象（密码不进⾏加密处理）
-     * @return
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+
 }
