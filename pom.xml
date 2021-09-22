@@ -20,6 +20,7 @@
         <module>lagou07-cloud-configserver-9006</module>
         <module>lagou08-cloud-stream-consumer-9091</module>
         <module>lagou09-cloud-zipkin-server-9411</module>
+        <module>lagou10-cloud-oauth-server-9999</module>
     </modules>
 
     <name>lagou-parent</name>
