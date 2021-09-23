@@ -9,19 +9,8 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.lagou.edu</groupId>
   <artifactId>lagou01-service-common</artifactId>
-  <version>1.0-SNAPSHOT</version>
 
-  <name>lagou01-service-common</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <dependencies>
     <!--Spring Data Jpa-->
@@ -35,5 +24,4 @@
       <scope>runtime</scope>
     </dependency>
   </dependencies>
-
 </project>

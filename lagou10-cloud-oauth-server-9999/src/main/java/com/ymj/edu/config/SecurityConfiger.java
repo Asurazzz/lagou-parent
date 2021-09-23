@@ -1,23 +1,23 @@
 package com.ymj.edu.config;
 
+import com.ymj.edu.service.JdbcUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.ArrayList;
 
 /**
  * 该配置类主要处理用户名和密码的校验
  */
 @Configuration
 public class SecurityConfiger extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private JdbcUserDetailsService jdbcUserDetailsService;
 
     /**
      * 密码编码对象（密码不进⾏加密处理）
@@ -51,9 +51,10 @@ public class SecurityConfiger extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 在这个⽅法中就可以去关联数据库了，当前我们先把⽤户信息配置在内存中
         // 实例化⼀个⽤户对象(相当于数据表中的⼀条⽤户记录)
-        UserDetails user = new User("admin","123456",new ArrayList<>());
-        auth.inMemoryAuthentication()
-                .withUser(user).passwordEncoder(passwordEncoder);
+//        UserDetails user = new User("admin","123456",new ArrayList<>());
+//        auth.inMemoryAuthentication()
+//                .withUser(user).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(jdbcUserDetailsService).passwordEncoder(passwordEncoder);
     }
 
 
