@@ -18,6 +18,7 @@ public class JdbcUserDetailsService implements UserDetailsService {
     private UsersRepository usersRepository;
 
     /** 根据username查询出该⽤户的所有信息，封装成UserDetails类型的对象返回，⾄于密码，框架会⾃动匹配
+     *
      * @param username
      * @return
      * @throws UsernameNotFoundException
